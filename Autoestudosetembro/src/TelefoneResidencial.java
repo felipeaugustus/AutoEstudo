@@ -29,7 +29,7 @@ public class TelefoneResidencial {
 			this.nome = nome;
 		} 
 		else {
-			throw new Error("Usuario Invalido");
+			throw new IllegalArgumentException("Usuario Invalido");
 		}
 		
 	}
