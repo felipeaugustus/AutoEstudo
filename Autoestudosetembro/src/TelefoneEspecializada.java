@@ -1,20 +1,19 @@
 import java.time.LocalDate;
 
-public class TelefoneComercial {
-
+public class TelefoneEspecializada {
 	private String nome;
 	private String endereco;
 	private LocalDate dataInstalacao;
 	private float valor;
 	private String numero;
 	
-	private String ramoAtividade; 
+	private int qtdOcorrencia;
 	
 	
 	
-	public TelefoneComercial(String nome, String endereco, LocalDate dataInstalacao, String ramoAtividade,
+	public TelefoneEspecializada(String nome, String endereco, LocalDate dataInstalacao, int qtdOcorrencia,
 			String numero) {
-		setRamoAtividade(ramoAtividade);
+		setQtdOcorrencia(qtdOcorrencia);
 		setDataInstalacao(dataInstalacao);
 		setEndereco(endereco);
 		setNome(nome);
@@ -22,18 +21,11 @@ public class TelefoneComercial {
 		
 		
 	}
-	public void setRamoAtividade(String ramoAtividade) {
-	
-		if (ramoAtividade != null) {
-		this.ramoAtividade = ramoAtividade;
-		} 
-		else {
-		throw new IllegalArgumentException("Usuario Invalido");
-		}
+	public void setQtdOcorrencia(int qtdOcorrencia) {
+		this.qtdOcorrencia = qtdOcorrencia;
 	}
-	
-	public String getRamoAtividade() {
-		return ramoAtividade;
+	public int getQtdOcorrencia() {
+		return qtdOcorrencia;
 	}
 	
 	public String getNome() {
@@ -75,14 +67,24 @@ public class TelefoneComercial {
 		return valor;
 	}
 	public void setValor(float valor) {
-		LocalDate testeDate = LocalDate.parse("2018-12-31");
-		if (dataInstalacao.isAfter(testeDate)) {
-			valor = 37.50f;
+		if (qtdOcorrencia > 50000) {
+			valor = 187.82f;
+		}
+		else if (qtdOcorrencia <= 50000 && qtdOcorrencia >= 10001 ) {
+			valor = 123.90f;
+		}
+		else if (qtdOcorrencia <= 10000 && qtdOcorrencia >= 5001) {
+			valor = 98.50f;
+		}
+		else if (qtdOcorrencia <= 5000 && qtdOcorrencia >= 1001) {
+			valor = 67.80f;
 		}
 		else {
-			valor = 25f;
+			valor = 50f;
 		}
+		
 	}
+	
 	
 	public String getNumero() {
 		return numero;
@@ -96,5 +98,4 @@ public class TelefoneComercial {
 		}
 		
 	}
-
 }

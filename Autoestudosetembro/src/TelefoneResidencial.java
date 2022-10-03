@@ -11,14 +11,14 @@ public class TelefoneResidencial {
 	
 	
 	
-	public TelefoneResidencial(String nome, String endereco, Date dataInstalacao, float valor, boolean conexaoInternet,
+	public TelefoneResidencial(String nome, String endereco, Date dataInstalacao, boolean conexaoInternet,
 			String numero) {
 		setConexaoInternet(conexaoInternet);
 		setDataInstalacao(dataInstalacao);
 		setEndereco(endereco);
 		setNome(nome);
 		setNumero(numero);
-		setValor(valor);
+		setValor();
 		
 	}
 	public String getNome() {
@@ -37,19 +37,31 @@ public class TelefoneResidencial {
 		return endereco;
 	}
 	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+		if (endereco != null) {
+			this.endereco = endereco;
+		} 
+		else {
+			throw new IllegalArgumentException("Endereço Invalido");
+		}
+		
 	}
 	public Date getDataInstalacao() {
 		return dataInstalacao;
 	}
 	public void setDataInstalacao(Date dataInstalacao) {
-		this.dataInstalacao = dataInstalacao;
+		if (dataInstalacao != null) {
+			this.dataInstalacao = dataInstalacao;
+		} 
+		else {
+			throw new IllegalArgumentException("Data Invalida");
+		}
+		
 	}
 	public float getValor() {
 		return valor;
 	}
-	public void setValor(float valor) {
-		this.valor = valor;
+	public void setValor() {
+		valor = 15f;	
 	}
 	public boolean isConexaoInternet() {
 		return conexaoInternet;
@@ -61,7 +73,13 @@ public class TelefoneResidencial {
 		return numero;
 	}
 	public void setNumero(String numero) {
-		this.numero = numero;
+		if (endereco != null) {
+			this.numero = numero;
+		} 
+		else {
+			throw new IllegalArgumentException("Valor Invalido");
+		}
+		
 	}
 
 	
