@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+//Felipe Araujo e Gustavo Bozzano
 public class TelefoneResidencial {
 	private String nome;
 	private String endereco;
