@@ -1,17 +1,17 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class TelefoneComercial {
-
 	private String nome;
 	private String endereco;
 	private LocalDate dataInstalacao;
 	private float valor;
 	private String numero;
-	
-	private String ramoAtividade; 
-	
-	
-	
+
+	private DateTimeFormatter df = DateTimeFormatter.ofPattern("d/M/y");
+
+	private String ramoAtividade;
+
 	public TelefoneComercial(String nome, String endereco, LocalDate dataInstalacao, String ramoAtividade,
 			String numero) {
 		setRamoAtividade(ramoAtividade);
@@ -19,82 +19,82 @@ public class TelefoneComercial {
 		setEndereco(endereco);
 		setNome(nome);
 		setNumero(numero);
-		
-		
+		setValor();
 	}
+
 	public void setRamoAtividade(String ramoAtividade) {
-	
-		if (ramoAtividade != null) {
-		this.ramoAtividade = ramoAtividade;
-		} 
-		else {
-		throw new IllegalArgumentException("Usuario Invalido");
+
+		if (ramoAtividade.length() > 0) {
+			this.ramoAtividade = ramoAtividade;
+		} else {
+			throw new Error("Ramo Invalido");
 		}
 	}
-	
+
 	public String getRamoAtividade() {
 		return ramoAtividade;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
-		if (nome != null) {
+		if (nome.length() > 0) {
 			this.nome = nome;
-		} 
-		else {
-			throw new IllegalArgumentException("Usuario Invalido");
+		} else {
+			throw new Error("Usuario Invalido");
 		}
 	}
+
 	public String getEndereco() {
 		return endereco;
 	}
+
 	public void setEndereco(String endereco) {
-		if (endereco != null) {
+		if (endereco.length() > 0) {
 			this.endereco = endereco;
-		} 
-		else {
-			throw new IllegalArgumentException("Usuario Invalido");
+		} else {
+			throw new Error("Endereco Invalido");
 		}
-		
 	}
-	public LocalDate getDataInstalacao() {
-		return dataInstalacao;
+
+	public String getDataInstalacao() {
+		return dataInstalacao.format(df);
 	}
+
 	public void setDataInstalacao(LocalDate dataInstalacao) {
-		
 		if (dataInstalacao != null) {
 			this.dataInstalacao = dataInstalacao;
-		} 
-		else {
-			throw new IllegalArgumentException("Usuario Invalido");
+		} else {
+			throw new Error("Data Invalido");
 		}
 	}
+
 	public float getValor() {
 		return valor;
 	}
-	public void setValor(float valor) {
+
+	public void setValor() {
 		LocalDate testeDate = LocalDate.parse("2018-12-31");
 		if (dataInstalacao.isAfter(testeDate)) {
-			valor = 37.50f;
-		}
-		else {
-			valor = 25f;
+			this.valor = 37.50f;
+		} else {
+			this.valor = 25f;
 		}
 	}
-	
+
 	public String getNumero() {
 		return numero;
 	}
-	public void setNumero(String numero) {
-		if (numero != null) {
-			this.numero = numero;
-		} 
-		else {
-			throw new IllegalArgumentException("Usuario Invalido");
-		}
-		
-	}
 
+	public void setNumero(String numero) {
+		if (numero.length() > 0) {
+			numero = numero.replace(" ", "").replace("-", "").replace("(", "").replace(")", "");
+			this.numero = numero;
+
+		} else {
+			throw new Error("Numero Invalido");
+		}
+	}
 }
